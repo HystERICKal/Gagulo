@@ -5,12 +5,14 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Navbar.scss";
 import Cart from "../Cart/Cart";
 import { useState } from "react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const products = useSelector((state) => state.cart.products);
 
   return (
     <div className="navbar">
@@ -73,7 +75,9 @@ const Navbar = () => {
             <FavoriteBorderOutlinedIcon />
             <div className="cartIcon" onClick={() => setOpen(!open)}>
               <ShoppingCartOutlinedIcon />
-              <span>0</span>
+              {/* If you add the same product twice the cart won't increase, 
+              you must add a different product to see the increase inn the cart value */}
+              <span>{products.length}</span>
             </div>
           </div>
         </div>

@@ -24,7 +24,7 @@ export const cartSlice = createSlice({
         //Increment the item that already exists in cart
         item.quantity += action.payload.quantity; //change object property
       } else {
-        state.push(action.payload); //push item to cart
+        state.products.push(action.payload); //push item to cart
       }
 
       //   state.value += 1;
